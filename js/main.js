@@ -127,74 +127,140 @@ if (document.readyState === 'complete') {
 })();
 
 /* ====================================
-   PROJECTS — DYNAMIC RENDERING
+   LAST UPDATED FOOTER
+   ==================================== */
+(function setLastUpdated() {
+  var el = document.getElementById('last-updated');
+  if (el && window.LAST_UPDATED) {
+    el.textContent = 'Last updated: ' + window.LAST_UPDATED;
+  }
+})();
+
+/* ====================================
+   PROJECTS — DYNAMIC RENDERING + FILTER + SKELETON
    ==================================== */
 (function renderProjects() {
-  const container = document.getElementById('work-projects');
+  var container = document.getElementById('work-projects');
   if (!container || !window.PROJECTS) return;
+
+  var currentFilter = 'All';
 
   function displayUrl(project) {
     if (project.liveUrl) {
-      try { return new URL(project.liveUrl).hostname; } catch { return project.liveUrl; }
+      try { return new URL(project.liveUrl).hostname; } catch(e) { return project.liveUrl; }
     }
     return project.title.toLowerCase().replace(/\s+/g, '') + '.local';
   }
 
-  container.innerHTML = window.PROJECTS
-    .map(function (project, i) {
-      var reversed = i % 2 !== 0;
-      return (
-        '<article class="project-card">' +
-          '<div class="flex flex-col lg:flex-row lg:items-center gap-8 lg:gap-12 min-w-0' +
-            (reversed ? ' lg:flex-row-reverse' : '') +
-          '">' +
-            '<div class="project-image-wrapper flex-1 min-w-0">' +
-              '<div class="browser-chrome">' +
-                '<div class="browser-header">' +
-                  '<div class="browser-dots">' +
-                     '<span></span><span></span><span></span>' +
+  function renderProjectCards(filter) {
+    var filtered = filter === 'All'
+      ? window.PROJECTS
+      : window.PROJECTS.filter(function (p) { return p.category === filter; });
+
+    container.innerHTML = filtered
+      .map(function (project, i) {
+        var originalIndex = window.PROJECTS.indexOf(project);
+        var reversed = originalIndex % 2 !== 0;
+        return (
+          '<article class="project-card" style="opacity:0;transition:opacity 300ms ease">' +
+            '<div class="flex flex-col lg:flex-row lg:items-center gap-8 lg:gap-12 min-w-0' +
+              (reversed ? ' lg:flex-row-reverse' : '') +
+            '">' +
+              '<div class="project-image-wrapper flex-1 min-w-0">' +
+                '<div class="browser-chrome">' +
+                  '<div class="browser-header">' +
+                    '<div class="browser-dots">' +
+                       '<span></span><span></span><span></span>' +
+                    '</div>' +
+                    '<span class="browser-url">' + displayUrl(project) + '</span>' +
                   '</div>' +
-                  '<span class="browser-url">' + displayUrl(project) + '</span>' +
+                  '<div class="browser-body">' +
+                    '<div class="project-skeleton"></div>' +
+                    '<img class="project-img" src="' + project.image + '" alt="' + project.title + ' screenshot" loading="lazy" style="opacity:0;transition:opacity 200ms ease" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\';" />' +
+                    '<div class="project-image-fallback" style="display:none"><span>' + project.title.charAt(0) + '</span></div>' +
+                  '</div>' +
                 '</div>' +
-                '<div class="browser-body">' +
-                  '<img src="' + project.image + '" alt="' + project.title + ' screenshot" loading="lazy" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\';" />' +
-                  '<div class="project-image-fallback" style="display:none"><span>' + project.title.charAt(0) + '</span></div>' +
+              '</div>' +
+              '<div class="project-info flex-1 min-w-0">' +
+                '<span class="project-number">// ' +
+                  String(originalIndex + 1).padStart(2, '0') +
+                '</span>' +
+                '<h3 class="project-title">' + project.title + '</h3>' +
+                (project.badge
+                  ? '<span class="project-badge">' + project.badge + '</span>'
+                  : '') +
+                '<div class="project-detail">' +
+                  '<h4>Problem</h4>' +
+                  '<p>' + project.problem + '</p>' +
+                '</div>' +
+                '<div class="project-detail">' +
+                  '<h4>Solution</h4>' +
+                  '<p>' + project.solution + '</p>' +
+                '</div>' +
+                '<div class="project-tech">' +
+                  project.techStack
+                    .map(function (t) { return '<span class="tech-tag">' + t + '</span>'; })
+                    .join('') +
+                '</div>' +
+                '<div class="project-links">' +
+                  (project.liveUrl
+                    ? '<a href="' + project.liveUrl + '" target="_blank" rel="noopener noreferrer" class="project-link min-h-[44px] inline-flex items-center">Live Site &rarr;</a>'
+                    : '') +
+                  (project.codeUrl
+                    ? '<a href="' + project.codeUrl + '" target="_blank" rel="noopener noreferrer" class="project-link min-h-[44px] inline-flex items-center">Source Code &rarr;</a>'
+                    : '') +
                 '</div>' +
               '</div>' +
             '</div>' +
-            '<div class="project-info flex-1 min-w-0">' +
-              '<span class="project-number">// ' +
-                String(i + 1).padStart(2, '0') +
-              '</span>' +
-              '<h3 class="project-title">' + project.title + '</h3>' +
-              (project.badge
-                ? '<span class="project-badge">' + project.badge + '</span>'
-                : '') +
-              '<div class="project-detail">' +
-                '<h4>Problem</h4>' +
-                '<p>' + project.problem + '</p>' +
-              '</div>' +
-              '<div class="project-detail">' +
-                '<h4>Solution</h4>' +
-                '<p>' + project.solution + '</p>' +
-              '</div>' +
-              '<div class="project-tech">' +
-                project.techStack
-                  .map(function (t) { return '<span class="tech-tag">' + t + '</span>'; })
-                  .join('') +
-              '</div>' +
-              '<div class="project-links">' +
-                (project.liveUrl
-                  ? '<a href="' + project.liveUrl + '" target="_blank" rel="noopener noreferrer" class="project-link min-h-[44px] inline-flex items-center">Live Site &rarr;</a>'
-                  : '') +
-                (project.codeUrl
-                  ? '<a href="' + project.codeUrl + '" target="_blank" rel="noopener noreferrer" class="project-link min-h-[44px] inline-flex items-center">Source Code &rarr;</a>'
-                  : '') +
-              '</div>' +
-            '</div>' +
-          '</div>' +
-        '</article>'
-      );
-    })
-    .join('');
+          '</article>'
+        );
+      })
+      .join('');
+
+    // Stagger fade-in and attach skeleton loaders
+    requestAnimationFrame(function () {
+      var cards = container.querySelectorAll('.project-card');
+      cards.forEach(function (card, i) {
+        setTimeout(function () { card.style.opacity = '1'; }, i * 100);
+      });
+
+      var imgs = container.querySelectorAll('.project-img');
+      imgs.forEach(function (img) {
+        function onLoaded() {
+          img.style.opacity = '1';
+          var skeleton = img.previousElementSibling;
+          if (skeleton && skeleton.classList.contains('project-skeleton')) {
+            skeleton.style.opacity = '0';
+            setTimeout(function () { skeleton.remove(); }, 300);
+          }
+        }
+        if (img.complete) {
+          onLoaded();
+        } else {
+          img.addEventListener('load', onLoaded);
+          img.addEventListener('error', onLoaded);
+        }
+      });
+    });
+  }
+
+  renderProjectCards(currentFilter);
+
+  // Filter buttons
+  var filterContainer = document.getElementById('project-filters');
+  if (filterContainer) {
+    filterContainer.addEventListener('click', function (e) {
+      var btn = e.target.closest('.filter-pill');
+      if (!btn) return;
+      var filter = btn.dataset.filter;
+      if (filter === currentFilter) return;
+
+      filterContainer.querySelectorAll('.filter-pill').forEach(function (b) {
+        b.classList.remove('active');
+      });
+      btn.classList.add('active');
+      currentFilter = filter;
+      renderProjectCards(filter);
+    });
+  }
 })();

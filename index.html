@@ -63,10 +63,9 @@
                   class="relative inline-flex items-center justify-center min-w-[44px] min-h-[44px] sm:min-w-0 sm:min-h-0 h-7 w-[52px] rounded-full border border-border bg-surface cursor-pointer select-none overflow-hidden outline-none focus-visible:ring-2 focus-visible:ring-accent transition-colors duration-300"
                   aria-label="Toggle theme">
             <span class="absolute inset-0 rounded-full bg-border/50"></span>
-            <span class="theme-toggle-thumb absolute top-0.5 left-0.5 w-6 h-6 rounded-full bg-accent shadow-md shadow-accent/20"></span>
-            <span class="relative z-10 flex items-center justify-between w-full px-1.5 text-[10px] font-mono font-semibold leading-none pointer-events-none">
-              <span class="text-text-secondary">D</span>
-              <span class="text-text-primary">L</span>
+            <span class="theme-toggle-thumb absolute top-0.5 left-0.5 w-6 h-6 rounded-full bg-accent shadow-md shadow-accent/20 flex items-center justify-center">
+              <svg class="theme-icon-sun w-3.5 h-3.5 text-bg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+              <svg class="theme-icon-moon w-3.5 h-3.5 text-bg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
             </span>
           </button>
 
@@ -334,6 +333,14 @@
         </h2>
       </div>
 
+      <!-- Filter bar -->
+      <div id="project-filters" class="mt-8 flex flex-wrap gap-2">
+        <button class="filter-pill active" data-filter="All">All</button>
+        <button class="filter-pill" data-filter="Frontend">Frontend</button>
+        <button class="filter-pill" data-filter="Backend">Backend</button>
+        <button class="filter-pill" data-filter="Fullstack">Fullstack</button>
+      </div>
+
       <!-- Rendered dynamically from js/data.js via js/main.js -->
       <div id="work-projects" class="mt-12 md:mt-16 space-y-20 md:space-y-28"></div>
 
@@ -474,7 +481,7 @@
     <footer class="mt-24 md:mt-32 border-t border-border">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-12">
         <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
-          <span class="font-mono text-xs text-text-secondary">&copy; 2026 Shubham Thakkar. Built with curiosity.</span>
+          <span class="font-mono text-xs text-text-secondary">&copy; 2026 Shubham Thakkar. Built with curiosity. <span id="last-updated" class="ml-2 opacity-60"></span></span>
           <div class="flex items-center gap-8">
             <a href="https://github.com/Lucifer0442" target="_blank" rel="noopener noreferrer" data-cursor="OPEN" class="social-link">GitHub</a>
             <a href="https://www.linkedin.com/in/shubhamthakkar2007/" target="_blank" rel="noopener noreferrer" data-cursor="OPEN" class="social-link">LinkedIn</a>

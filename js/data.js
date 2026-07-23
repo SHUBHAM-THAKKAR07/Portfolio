@@ -2,6 +2,7 @@ var PROJECTS = [
   {
     title: "CheckedIn",
     badge: "\u{1F3C6} 1st Place \u2014 Hackathon",
+    category: "Fullstack",
     problem:
       "Shantilal Shah College (Bhavnagar) had no system for managing campus events \u2014 students had no central place to discover events, and faculty had no reliable way to verify or track attendance at the door.",
     solution:
@@ -14,6 +15,7 @@ var PROJECTS = [
   {
     title: "AssetFlow",
     badge: "Odoo Hackathon \u2014 Results Pending",
+    category: "Fullstack",
     problem:
       "Odoo needed a way to track company assets assigned to employees \u2014 which were in use, which needed repair, which required maintenance \u2014 with no centralized visibility into real-time location.",
     solution:
@@ -26,6 +28,7 @@ var PROJECTS = [
   {
     title: "CozaStore",
     badge: null,
+    category: "Fullstack",
     problem:
       "Small clothing retailers and wholesalers had no direct way to sell to customers online \u2014 stuck relying on middlemen or generic marketplaces that ate into their margins.",
     solution:
@@ -36,3 +39,5 @@ var PROJECTS = [
     codeUrl: null,
   },
 ];
+
+var LAST_UPDATED = "July 2026";
