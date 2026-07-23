@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Primary Meta -->
+  <title>Shubham Thakkar | Fullstack Developer Portfolio</title>
+  <meta name="description" content="Fullstack developer portfolio showcasing projects, skills, and experience in modern web development." />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="Shubham Thakkar | Fullstack Developer Portfolio" />
+  <meta property="og:description" content="Fullstack developer portfolio showcasing projects, skills, and experience in modern web development." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/assets/images/profile/profile-main.jpeg" />
+
+  <!-- Favicon — cross-browser + cross-device -->
+  <link rel="icon" type="image/svg+xml" href="/assets/images/misc/favicon-source.svg" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/misc/favicon-16x16.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/misc/favicon-32x32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/misc/apple-touch-icon.png" />
+  <link rel="manifest" href="/assets/images/misc/site.webmanifest" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/animations.css" />
+
+  <!-- Scripts -->
+  <script src="/js/data.js" defer></script>
+  <script src="/js/animations.js" defer></script>
+  <script src="/js/main.js" defer></script>
+</head>
+<body class="bg-bg text-text-primary font-body overflow-x-hidden">
+
+  <!-- NAV -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 md:h-20">
+
+        <!-- Left: Name -->
+        <a href="#" class="font-mono text-sm uppercase tracking-[0.2em] text-text-primary hover:text-accent transition-colors">
+          Shubham Thakkar.
+      </a>
+
+        <!-- Center-right: Desktop links -->
+        <ul class="hidden md:flex items-center gap-6 lg:gap-8">
+          <li><a href="#about" class="nav-link inline-flex items-center min-h-[44px] text-sm font-medium text-text-secondary hover:text-text-primary transition-colors">About</a></li>
+          <li><a href="#work" class="nav-link inline-flex items-center min-h-[44px] text-sm font-medium text-text-secondary hover:text-text-primary transition-colors">Work</a></li>
+          <li><a href="#skills" class="nav-link inline-flex items-center min-h-[44px] text-sm font-medium text-text-secondary hover:text-text-primary transition-colors">Skills</a></li>
+          <li><a href="#experience" class="nav-link inline-flex items-center min-h-[44px] text-sm font-medium text-text-secondary hover:text-text-primary transition-colors">Experience</a></li>
+          <li><a href="#contact" class="nav-link inline-flex items-center min-h-[44px] text-sm font-medium text-text-secondary hover:text-text-primary transition-colors">Contact</a></li>
+      </ul>
+
+        <!-- Right: Theme toggle + Hamburger -->
+        <div class="flex items-center gap-2 sm:gap-3">
+          <!-- Theme toggle -->
+          <button id="theme-toggle" type="button" onclick="toggleTheme()"
+                  class="relative inline-flex items-center justify-center min-w-[44px] min-h-[44px] sm:min-w-0 sm:min-h-0 h-7 w-[52px] rounded-full border border-border bg-surface cursor-pointer select-none overflow-hidden outline-none focus-visible:ring-2 focus-visible:ring-accent transition-colors duration-300"
+                  aria-label="Toggle theme">
+            <span class="absolute inset-0 rounded-full bg-border/50"></span>
+            <span class="theme-toggle-thumb absolute top-0.5 left-0.5 w-6 h-6 rounded-full bg-accent shadow-md shadow-accent/20"></span>
+            <span class="relative z-10 flex items-center justify-between w-full px-1.5 text-[10px] font-mono font-semibold leading-none pointer-events-none">
+              <span class="text-text-secondary">D</span>
+              <span class="text-text-primary">L</span>
+            </span>
+          </button>
+
+          <!-- Hamburger (mobile only) — 44x44 touch target -->
+          <button id="hamburger-btn" type="button" class="md:hidden relative w-11 h-11 flex flex-col items-center justify-center gap-[5px] cursor-pointer z-50" aria-label="Menu">
+            <span class="hamburger-line block w-5 h-px bg-text-primary rounded-full transition-all duration-300 origin-center"></span>
+            <span class="hamburger-line block w-5 h-px bg-text-primary rounded-full transition-all duration-300 origin-center"></span>
+            <span class="hamburger-line block w-5 h-px bg-text-primary rounded-full transition-all duration-300 origin-center"></span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile overlay nav -->
+  <div id="mobile-nav" class="fixed inset-0 z-40 flex flex-col items-center justify-center bg-bg/95 backdrop-blur-xl md:hidden opacity-0 pointer-events-none transition-opacity duration-300 overflow-y-auto">
+    <ul class="flex flex-col items-center gap-6 sm:gap-8 px-4">
+      <li class="mobile-nav-item"><a href="#about" class="inline-flex items-center justify-center min-h-[48px] min-w-[120px] text-2xl sm:text-3xl font-headline text-text-primary hover:text-accent transition-colors">About</a></li>
+      <li class="mobile-nav-item"><a href="#work" class="inline-flex items-center justify-center min-h-[48px] min-w-[120px] text-2xl sm:text-3xl font-headline text-text-primary hover:text-accent transition-colors">Work</a></li>
+      <li class="mobile-nav-item"><a href="#skills" class="inline-flex items-center justify-center min-h-[48px] min-w-[120px] text-2xl sm:text-3xl font-headline text-text-primary hover:text-accent transition-colors">Skills</a></li>
+      <li class="mobile-nav-item"><a href="#experience" class="inline-flex items-center justify-center min-h-[48px] min-w-[120px] text-2xl sm:text-3xl font-headline text-text-primary hover:text-accent transition-colors">Experience</a></li>
+      <li class="mobile-nav-item"><a href="#contact" class="inline-flex items-center justify-center min-h-[48px] min-w-[120px] text-2xl sm:text-3xl font-headline text-text-primary hover:text-accent transition-colors">Contact</a></li>
+   </ul>
+ </div>
+
+  <!-- HERO -->
+  <header id="hero" class="relative min-h-screen flex items-center pt-24 md:pt-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <div class="flex flex-col lg:flex-row lg:items-center gap-10 sm:gap-12 lg:gap-16">
+
+        <!-- Left: Hero text -->
+        <div class="flex-1 max-w-2xl min-w-0">
+
+          <!-- Status label -->
+          <div class="animate-on-load stagger-1">
+            <span class="inline-flex items-center gap-2.5 px-3 sm:px-4 py-1.5 rounded-full border border-border bg-surface text-xs font-mono text-text-secondary">
+              <span class="status-dot"></span>
+              // STATUS: Open to opportunities
+           </span>
+         </div>
+
+          <!-- Headline — scales from mobile (text-4xl) up through xl (text-8xl) -->
+          <h1 class="animate-on-load stagger-2 mt-6 sm:mt-8 font-headline text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-[1.1] tracking-tight break-words">
+            Shubham Thakkar.<br>
+            <span class="font-light text-text-secondary text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl block mt-2 sm:mt-4">Fullstack developer building products end-to-end</span>
+         </h1>
+
+          <!-- Description -->
+          <p class="animate-on-load stagger-3 mt-6 text-base md:text-lg text-text-secondary leading-relaxed max-w-xl">
+            I architect and ship fullstack applications from concept to deployment — turning complex problems into clean, performant user experiences.
+         </p>
+
+          <!-- CTAs — wrap on small widths, min-height for touch targets -->
+          <div class="animate-on-load stagger-4 mt-8 flex flex-wrap items-center gap-4 sm:gap-6">
+            <a href="#work" data-cursor="VIEW" class="inline-flex items-center justify-center min-h-[44px] px-6 py-3 rounded-lg bg-accent text-bg font-semibold text-sm hover:bg-accent/90 transition-colors">
+              View Work
+           </a>
+            <a href="/assets/resume/Shubham-Thakkar-Resume.pdf" target="_blank" rel="noopener noreferrer" data-cursor="OPEN" class="resume-link relative inline-flex items-center min-h-[44px] text-sm font-medium text-text-primary hover:text-accent transition-colors">
+              Resume &rarr;
+           </a>
+         </div>
+
+          <!-- Mobile/Tablet stat strip (only <lg) — replaces the desktop terminal panel vertically -->
+          <div class="animate-on-load stagger-5 mt-10 lg:hidden grid grid-cols-2 gap-3">
+            <div class="rounded-lg border border-border bg-surface px-3 py-3">
+              <p class="text-[10px] font-mono uppercase tracking-wider text-text-secondary">$ status</p>
+              <p class="mt-1 text-sm font-mono text-text-primary">Available</p>
+           </div>
+            <div class="rounded-lg border border-border bg-surface px-3 py-3">
+              <p class="text-[10px] font-mono uppercase tracking-wider text-text-secondary">$ focus</p>
+              <p class="mt-1 text-sm font-mono text-text-primary">React, Node, TS</p>
+           </div>
+            <div class="rounded-lg border border-border bg-surface px-3 py-3">
+              <p class="text-[10px] font-mono uppercase tracking-wider text-text-secondary">$ projects</p>
+              <p class="mt-1 text-sm font-mono text-text-primary">12 shipped</p>
+           </div>
+            <div class="rounded-lg border border-border bg-surface px-3 py-3">
+              <p class="text-[10px] font-mono uppercase tracking-wider text-text-secondary">$ exp</p>
+              <p class="mt-1 text-sm font-mono text-text-primary">5+ years</p>
+           </div>
+         </div>
+      </div>
+
+        <!-- Right: Profile portrait + terminal panel (desktop only) -->
+        <div class="animate-on-load stagger-5 hidden lg:flex flex-col items-end gap-4 flex-shrink-0">
+
+          <!-- Profile portrait -->
+          <div class="hero-portrait">
+            <img src="/assets/images/profile/profile-main.jpeg" alt="Shubham Thakkar" />
+         </div>
+
+          <!-- Terminal panel -->
+          <div class="w-[300px] xl:w-[340px] rounded-xl border border-border bg-surface overflow-hidden">
+            <!-- Terminal header bar -->
+            <div class="flex items-center gap-1.5 px-4 py-3 border-b border-border bg-bg/50">
+              <span class="w-2.5 h-2.5 rounded-full bg-red-500"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-yellow-500"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-green-500"></span>
+              <span class="ml-2 text-[11px] font-mono text-text-secondary/60">terminal — bash</span>
+           </div>
+            <!-- Terminal body -->
+            <div class="px-4 py-5 space-y-2.5 font-mono text-sm">
+              <p class="text-text-secondary"><span class="text-accent font-medium">$</span> <span class="text-text-primary/80">STATUS</span><span class="text-text-secondary/60"> —</span>Available</p>
+              <p class="text-text-secondary"><span class="text-accent font-medium">$</span> <span class="text-text-primary/80">FOCUS</span><span class="text-text-secondary/60"> —</span>React, Node, TypeScript</p>
+              <p class="text-text-secondary"><span class="text-accent font-medium">$</span> <span class="text-text-primary/80">PROJECTS</span><span class="text-text-secondary/60"> —</span>12 shipped</p>
+              <p class="text-text-secondary"><span class="text-accent font-medium">$</span> <span class="text-text-primary/80">EXPERIENCE</span><span class="text-text-secondary/60"> —</span>5+ years</p>
+           </div>
+         </div>
+
+       </div>
+
+    </div>
+  </div>
+</header>
+
+  <!-- ABOUT / JOURNEY -->
+  <section id="about" class="py-24 md:py-32">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Section header -->
+      <div class="max-w-2xl">
+        <span class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-border bg-surface text-xs font-mono text-text-secondary">
+          // 02 — JOURNEY
+        </span>
+        <h2 class="mt-6 font-headline text-4xl md:text-5xl lg:text-6xl leading-tight">
+          The short version.
+        </h2>
+        <div class="mt-4 space-y-4 text-base md:text-lg text-text-secondary leading-relaxed">
+          <p>I started with a Diploma in <span class="text-text-primary">Computer Engineering Technology</span> — where I learned that knowing <em>how</em> something works matters more than knowing the shortcuts. That curiosity is what pulled me into full Computer Engineering, and eventually into building things people actually use.</p>
+          <p>Since then I&rsquo;ve led and shipped real projects — from a full e-commerce platform during my internship, to winning 1st place at a university hackathon building an event management system, to winning a critical-thinking challenge solving a smart-city flood crisis under live pressure. I&rsquo;m not chasing one framework. I&rsquo;m chasing the ability to take an idea from database to deployment, alone if I have to.</p>
+          <p>Currently in my 3rd year of B.Tech, and <span class="text-text-primary">building in public</span>.</p>
+        </div>
+      </div>
+
+      <!-- Timeline -->
+      <div class="timeline mt-16 md:mt-24">
+        <div class="timeline-items">
+
+          <div class="timeline-item" style="transition-delay: 0ms">
+            <div class="timeline-card">
+              <span class="timeline-label">2022</span>
+              <h3 class="timeline-title">Diploma Complete</h3>
+            </div>
+            <div class="timeline-marker">
+              <div class="timeline-stem"></div>
+              <div class="timeline-dot"></div>
+            </div>
+          </div>
+
+          <div class="timeline-item" style="transition-delay: 80ms">
+            <div class="timeline-card">
+              <span class="timeline-label">2023</span>
+              <h3 class="timeline-title">Started B.Tech &mdash; Computer Engineering</h3>
+            </div>
+            <div class="timeline-marker">
+              <div class="timeline-stem"></div>
+              <div class="timeline-dot"></div>
+            </div>
+          </div>
+
+          <div class="timeline-item" style="transition-delay: 160ms">
+            <div class="timeline-card">
+              <span class="timeline-label">2024</span>
+              <h3 class="timeline-title">CozaStore Shipped</h3>
+              <p class="timeline-sub">First live e-commerce platform</p>
+            </div>
+            <div class="timeline-marker">
+              <div class="timeline-stem"></div>
+              <div class="timeline-dot"></div>
+            </div>
+          </div>
+
+          <div class="timeline-item" style="transition-delay: 240ms">
+            <div class="timeline-card">
+              <span class="timeline-label">2025</span>
+              <h3 class="timeline-title">CheckedIn &mdash; 1st Place</h3>
+              <p class="timeline-sub">University hackathon, team lead</p>
+            </div>
+            <div class="timeline-marker">
+              <div class="timeline-stem"></div>
+              <div class="timeline-dot"></div>
+            </div>
+          </div>
+
+          <div class="timeline-item" style="transition-delay: 320ms">
+            <div class="timeline-card">
+              <span class="timeline-label">Now</span>
+              <h3 class="timeline-title">Building AssetFlow</h3>
+              <p class="timeline-sub">Odoo hackathon, team lead</p>
+            </div>
+            <div class="timeline-marker">
+              <div class="timeline-stem"></div>
+              <div class="timeline-dot"></div>
+            </div>
+          </div>
+
+        </div>
+        <div class="timeline-bar" aria-hidden="true"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="py-24 md:py-32">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Section header -->
+      <div class="max-w-2xl">
+        <span class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-border bg-surface text-xs font-mono text-text-secondary">
+          // 03 — SKILLS
+        </span>
+        <h2 class="mt-6 font-headline text-4xl md:text-5xl lg:text-6xl leading-tight">
+          The stack.
+        </h2>
+      </div>
+
+      <!-- Two columns — stacks below sm (640), two-up at sm+ -->
+      <div class="mt-12 md:mt-16 grid grid-cols-1 sm:grid-cols-2 gap-10 sm:gap-8 md:gap-14">
+
+        <!-- Frontend Ledger -->
+        <div>
+          <h3 class="font-mono text-sm font-semibold text-accent uppercase tracking-wider mb-5">
+            Frontend Ledger
+        </h3>
+          <div class="flex flex-wrap gap-2.5 sm:gap-3 max-w-full">
+            <span class="skill-chip"><span class="skill-name">React</span><span class="skill-proof">shipped 3x</span></span>
+            <span class="skill-chip"><span class="skill-name">Next.js</span><span class="skill-proof">shipped 2x</span></span>
+            <span class="skill-chip"><span class="skill-name">Tailwind CSS</span><span class="skill-proof">shipped 4x</span></span>
+            <span class="skill-chip"><span class="skill-name">JavaScript (ES6+)</span><span class="skill-proof">shipped 4x</span></span>
+            <span class="skill-chip"><span class="skill-name">TypeScript</span><span class="skill-proof">learning</span></span>
+        </div>
+      </div>
+
+        <!-- Backend Ledger -->
+        <div>
+          <h3 class="font-mono text-sm font-semibold text-accent uppercase tracking-wider mb-5">
+            Backend Ledger
+        </h3>
+          <div class="flex flex-wrap gap-2.5 sm:gap-3 max-w-full">
+            <span class="skill-chip"><span class="skill-name">Node.js</span><span class="skill-proof">shipped 3x</span></span>
+            <span class="skill-chip"><span class="skill-name">Express</span><span class="skill-proof">shipped 2x</span></span>
+            <span class="skill-chip"><span class="skill-name">MongoDB</span><span class="skill-proof">shipped 2x</span></span>
+            <span class="skill-chip"><span class="skill-name">PostgreSQL</span><span class="skill-proof">shipped 2x</span></span>
+            <span class="skill-chip"><span class="skill-name">REST APIs</span><span class="skill-proof">built 4+</span></span>
+            <span class="skill-chip"><span class="skill-name">PHP + MySQL</span><span class="skill-proof">shipped 1x (CozaStore)</span></span>
+        </div>
+      </div>
+
+   </div>
+</div>
+</section>
+
+  <!-- PROJECTS / WORK -->
+  <section id="work" class="py-24 md:py-32">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="max-w-2xl">
+        <span class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-border bg-surface text-xs font-mono text-text-secondary">
+          // 04 — PROJECTS
+        </span>
+        <h2 class="mt-6 font-headline text-4xl md:text-5xl lg:text-6xl leading-tight">
+          Things I've built.
+        </h2>
+      </div>
+
+      <!-- Rendered dynamically from js/data.js via js/main.js -->
+      <div id="work-projects" class="mt-12 md:mt-16 space-y-20 md:space-y-28"></div>
+
+    </div>
+  </section>
+
+  <!-- BEYOND CODE -->
+  <section id="beyond-code" class="py-24 md:py-32">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="max-w-2xl">
+        <span class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-border bg-surface text-xs font-mono text-text-secondary">
+          // 05 — BEYOND CODE
+        </span>
+        <h2 class="mt-6 font-headline text-4xl md:text-5xl lg:text-6xl leading-tight">
+          Beyond the keyboard.
+        </h2>
+      </div>
+
+      <!-- Featured case study card -->
+      <div class="beyond-card mt-12 md:mt-16 mx-auto max-w-3xl">
+        <div class="beyond-card-header">
+          <span class="beyond-badge">&#x1F3C6; 1st Place — Critical Thinking Challenge</span>
+          <h3 class="beyond-title">Flood-Resilient Smart City — Case Study</h3>
+        </div>
+        <div class="beyond-card-body">
+          <p class="beyond-description">
+            A live problem-solving round with three escalating twists. Starting scenario: heavy rainfall floods a smart city, knocking out roads, communication, and power — with judges invalidating our solution and adding a new constraint every 20 minutes across 3 rounds.
+          </p>
+          <ul class="beyond-solutions">
+            <li>Underground diversion drainage with sensor + manual dual-mode caps that auto-open under excess water weight, routing floodwater to storage tanks</li>
+            <li>In-path micro-turbines that generate electricity from the diverted flow itself</li>
+            <li>An offline, SMS-based communication layer for public updates when networks fail</li>
+            <li>Automated traffic clearance triggered by the same flood-detection system</li>
+          </ul>
+          <div class="beyond-meta">
+            <span><strong>Role:</strong> Team Lead</span>
+            <span><strong>Event:</strong> Shantilal Shah College, Bhavnagar</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EXPERIENCE / LOG -->
+  <section id="experience" class="py-24 md:py-32">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="max-w-2xl">
+        <span class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-border bg-surface text-xs font-mono text-text-secondary">
+          // 06 — LOG
+        </span>
+        <h2 class="mt-6 font-headline text-4xl md:text-5xl lg:text-6xl leading-tight">
+          Experience log.
+        </h2>
+      </div>
+
+      <div class="mt-12 md:mt-16 overflow-x-auto">
+        <table class="exp-table w-full">
+          <thead>
+            <tr>
+              <th>DATE</th>
+              <th>ROLE</th>
+              <th>ORG</th>
+              <th>OUTCOME</th>
+          </tr>
+        </thead>
+          <tbody>
+            <tr>
+              <td data-label="DATE">2024</td>
+              <td data-label="ROLE">Team Lead</td>
+              <td data-label="ORG">Shantilal Shah College Hackathon</td>
+              <td data-label="OUTCOME">1st Place — Built CheckedIn</td>
+          </tr>
+            <tr>
+              <td data-label="DATE">2024</td>
+              <td data-label="ROLE">Team Lead</td>
+              <td data-label="ORG">Critical Thinking Challenge</td>
+              <td data-label="OUTCOME">1st Place — Flood-Resilient Smart City</td>
+          </tr>
+            <tr>
+              <td data-label="DATE">2025</td>
+              <td data-label="ROLE">Intern</td>
+              <td data-label="ORG">Internship Company</td>
+              <td data-label="OUTCOME">Shipped CozaStore end-to-end</td>
+          </tr>
+            <tr>
+              <td data-label="DATE">2025</td>
+              <td data-label="ROLE">Team Lead</td>
+              <td data-label="ORG">Odoo Hackathon</td>
+              <td data-label="OUTCOME">Built AssetFlow — results pending</td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-24 md:py-32">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="max-w-2xl">
+        <span class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-border bg-surface text-xs font-mono text-text-secondary">
+          // 07 — CONTACT
+        </span>
+      </div>
+
+      <h2 class="mt-8 font-headline text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-tight max-w-4xl">
+        Let's build <span class="text-accent">something.</span>
+      </h2>
+
+      <div class="mt-12 md:mt-16 max-w-lg w-full">
+        <form id="contact-form" class="contact-form">
+          <div class="form-field">
+            <label for="name">name</label>
+            <input type="text" id="name" name="name" required minlength="2" class="terminal-input" placeholder="enter your name" />
+          </div>
+          <div class="form-field">
+            <label for="email">email</label>
+            <input type="email" id="email" name="email" required class="terminal-input" placeholder="enter your email" />
+          </div>
+          <div class="form-field">
+            <label for="message">message</label>
+            <textarea id="message" name="message" rows="5" required class="terminal-input" placeholder="type your message..."></textarea>
+          </div>
+          <button type="submit" class="submit-btn w-full sm:w-auto sm:self-start min-h-[44px]">
+            Send Message &rarr;
+          </button>
+        </form>
+      </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-24 md:mt-32 border-t border-border">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-12">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+          <span class="font-mono text-xs text-text-secondary">&copy; 2026 Shubham Thakkar. Built with curiosity.</span>
+          <div class="flex items-center gap-8">
+            <a href="https://github.com/Lucifer0442" target="_blank" rel="noopener noreferrer" data-cursor="OPEN" class="social-link">GitHub</a>
+            <a href="https://www.linkedin.com/in/shubhamthakkar2007/" target="_blank" rel="noopener noreferrer" data-cursor="OPEN" class="social-link">LinkedIn</a>
+            <a href="mailto:shubhamthakkar2007@gmail.com" data-cursor="OPEN" class="social-link">Email</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </section>
+
+  <div id="app"></div>
+</body>
+</html>

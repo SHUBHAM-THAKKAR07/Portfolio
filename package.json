@@ -1,0 +1,17 @@
+{
+  "name": "cozaportfolio",
+  "version": "1.0.0",
+  "description": "Fullstack developer portfolio",
+  "private": true,
+  "scripts": {
+    "build:css": "tailwindcss -i ./src/css/tailwind.css -o ./css/main.css",
+    "watch:css": "tailwindcss -i ./src/css/tailwind.css -o ./css/main.css --watch",
+    "build:favicon": "node scripts/generate-favicons.js",
+    "build": "npm run build:css && npm run build:favicon"
+  },
+  "devDependencies": {
+    "png-to-ico": "^3.0.2",
+    "sharp": "^0.35.3",
+    "tailwindcss": "^3.4.17"
+  }
+}
