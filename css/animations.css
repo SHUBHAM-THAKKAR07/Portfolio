@@ -1,14 +1,19 @@
 /* ====================================
-   THEME TOGGLE
+   THEME TOGGLE — PILL SWITCH
    ==================================== */
+.theme-toggle {
+  flex-shrink: 0;
+}
+
 .theme-toggle-thumb {
-  transition: transform 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .theme-toggle-thumb svg {
   transition: transform 300ms ease, opacity 300ms ease;
 }
 
+/* Dark mode: thumb at left, show moon */
 [data-theme="dark"] .theme-toggle-thumb {
   transform: translateX(0);
 }
@@ -23,8 +28,9 @@
   transform: rotate(-90deg) scale(0.5);
 }
 
+/* Light mode: thumb at right, show sun */
 [data-theme="light"] .theme-toggle-thumb {
-  transform: translateX(28px);
+  transform: translateX(24px);
 }
 
 [data-theme="light"] .theme-icon-sun {

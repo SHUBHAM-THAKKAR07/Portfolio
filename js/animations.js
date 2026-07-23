@@ -41,7 +41,7 @@
   animate();
 
   function getCursorLabel(el) {
-    if (el.dataset.cursor) return el.dataset.cursor;
+    if (el.hasAttribute('data-cursor')) return el.dataset.cursor || '';
     if (el.tagName === 'A' && (el.target === '_blank' || el.href.startsWith('http'))) {
       return 'OPEN';
     }
@@ -57,6 +57,13 @@
       if (target && target !== hoveredEl) {
         hoveredEl = target;
         activeLabel = getCursorLabel(target);
+        // Skip elements with data-cursor="" (opt-out)
+        if (target.hasAttribute('data-cursor') && activeLabel === '') {
+          isHovering = false;
+          cursor.classList.remove('is-hovering');
+          label.textContent = '';
+          return;
+        }
         label.textContent = activeLabel;
         isHovering = true;
         cursor.classList.add('is-hovering');
