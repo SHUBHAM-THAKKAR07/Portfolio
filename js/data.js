@@ -1,4 +1,4 @@
-const PROJECTS = [
+var PROJECTS = [
   {
     title: "CheckedIn",
     badge: "\u{1F3C6} 1st Place \u2014 Hackathon",
