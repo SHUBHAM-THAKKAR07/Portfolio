@@ -57,7 +57,7 @@
       if (target && target !== hoveredEl) {
         hoveredEl = target;
         activeLabel = getCursorLabel(target);
-        // Skip elements with data-cursor="" (opt-out)
+        // Elements with data-cursor="" are explicitly opted out
         if (target.hasAttribute('data-cursor') && activeLabel === '') {
           isHovering = false;
           cursor.classList.remove('is-hovering');
